@@ -1,6 +1,5 @@
 import AppCenter
 import AppCenterAnalytics
-import AppCenterCrashes
 import UIKit
 
 @UIApplicationMain
@@ -9,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         MSAppCenter.setLogLevel(.verbose)
-        MSAppCenter.start("797f45ee-993d-4c23-a2f0-a422d8783a91", withServices: [MSAnalytics.self, MSCrashes.self])
+        MSAppCenter.start("797f45ee-993d-4c23-a2f0-a422d8783a91", withServices: [MSAnalytics.self])
         return true
     }
 

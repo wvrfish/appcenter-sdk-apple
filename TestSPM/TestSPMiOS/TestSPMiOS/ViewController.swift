@@ -1,6 +1,5 @@
 import AppCenter
 import AppCenterAnalytics
-import AppCenterCrashes
 import UIKit
 
 class ViewController: UIViewController {

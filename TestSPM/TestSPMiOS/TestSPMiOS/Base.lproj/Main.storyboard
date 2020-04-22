@@ -29,19 +29,10 @@
                                     <action selector="trackEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="99k-ZX-SaG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrR-zN-sU0">
-                                <rect key="frame" x="186.5" y="254" width="41" height="30"/>
-                                <state key="normal" title="Crash"/>
-                                <connections>
-                                    <action selector="crash:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B9y-66-LJe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="QrR-zN-sU0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8MU-RF-dL5"/>
                             <constraint firstItem="yMm-fH-37J" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Gux-t0-N4o"/>
-                            <constraint firstItem="QrR-zN-sU0" firstAttribute="top" secondItem="zzd-Bm-GDK" secondAttribute="bottom" constant="50" id="gaN-Cu-l4J"/>
                             <constraint firstItem="zzd-Bm-GDK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j26-6I-AA6"/>
                             <constraint firstItem="zzd-Bm-GDK" firstAttribute="top" secondItem="yMm-fH-37J" secondAttribute="bottom" constant="50" id="nL2-eV-Hjv"/>
                             <constraint firstItem="yMm-fH-37J" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wdD-aN-7E2"/>

@@ -35,26 +35,15 @@
                                     <action selector="trackEvent:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="J0L-4Q-XgH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbB-Sg-fuc">
-                                <rect key="frame" x="823.5" y="362" width="273" height="86"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Crash"/>
-                                <connections>
-                                    <action selector="crash:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="oky-PE-3s0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nL7-Eq-AuV" firstAttribute="centerX" secondItem="wu6-TO-1qx" secondAttribute="centerX" id="2Dj-Ih-GRk"/>
                             <constraint firstItem="nL7-Eq-AuV" firstAttribute="top" secondItem="Fvm-rk-3UT" secondAttribute="bottom" constant="50" id="Lsi-jV-2Lg"/>
-                            <constraint firstItem="cbB-Sg-fuc" firstAttribute="centerX" secondItem="wu6-TO-1qx" secondAttribute="centerX" id="QPA-me-nfM"/>
                             <constraint firstItem="nL7-Eq-AuV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XaC-SE-wg3"/>
                             <constraint firstItem="Fvm-rk-3UT" firstAttribute="centerX" secondItem="wu6-TO-1qx" secondAttribute="centerX" id="jgt-9B-TGC"/>
-                            <constraint firstItem="cbB-Sg-fuc" firstAttribute="leading" secondItem="nL7-Eq-AuV" secondAttribute="leading" id="rOG-x2-Mev"/>
                             <constraint firstItem="Fvm-rk-3UT" firstAttribute="top" secondItem="wu6-TO-1qx" secondAttribute="top" constant="30" id="tgQ-hL-CNa"/>
                             <constraint firstItem="Fvm-rk-3UT" firstAttribute="leading" secondItem="nL7-Eq-AuV" secondAttribute="leading" id="thf-yq-8E7"/>
-                            <constraint firstItem="cbB-Sg-fuc" firstAttribute="top" secondItem="nL7-Eq-AuV" secondAttribute="bottom" constant="50" id="wzf-Fz-Fjs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>

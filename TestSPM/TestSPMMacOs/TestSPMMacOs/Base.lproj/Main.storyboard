@@ -729,21 +729,9 @@
                                     <action selector="trackEvent:" target="XfG-lQ-9wD" id="Axs-us-Cfc"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ogz-mj-nFw">
-                                <rect key="frame" x="216" y="125" width="48" height="19"/>
-                                <buttonCell key="cell" type="roundRect" title="Crash" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sxt-yH-Dj5">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="label" size="12"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="crash:" target="XfG-lQ-9wD" id="qhE-vX-uR9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Twl-9m-l9L" firstAttribute="top" secondItem="XhW-hN-1T8" secondAttribute="bottom" constant="30" id="9YT-Qp-RG7"/>
-                            <constraint firstItem="Ogz-mj-nFw" firstAttribute="top" secondItem="Twl-9m-l9L" secondAttribute="bottom" constant="30" id="EBK-eV-VQK"/>
-                            <constraint firstItem="Ogz-mj-nFw" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="XwT-p8-qXS"/>
                             <constraint firstItem="XhW-hN-1T8" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="cq8-fL-s66"/>
                             <constraint firstItem="XhW-hN-1T8" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="dft-UN-Ukn"/>
                             <constraint firstItem="Twl-9m-l9L" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="tOh-7D-3cX"/>

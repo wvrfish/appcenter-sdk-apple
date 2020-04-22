@@ -1,6 +1,5 @@
 import AppCenter
 import AppCenterAnalytics
-import AppCenterCrashes
 import UIKit
 
 @UIApplicationMain
@@ -9,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         MSAppCenter.setLogLevel(.verbose)
-        MSAppCenter.start("f1cc9f03-e3ce-459d-bad7-61d3c3a0bfcb", withServices: [MSAnalytics.self, MSCrashes.self])
+        MSAppCenter.start("f1cc9f03-e3ce-459d-bad7-61d3c3a0bfcb", withServices: [MSAnalytics.self])
         return true
     }
 

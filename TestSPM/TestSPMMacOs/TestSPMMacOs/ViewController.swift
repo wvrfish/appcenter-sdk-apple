@@ -15,11 +15,6 @@ class ViewController: NSViewController {
         MSAnalytics.trackEvent("TestEvent_SPM")
     }
     
-    @IBAction func crash(_ sender: Any) {
-        let buf: UnsafeMutablePointer<UInt>? = nil;
-        buf![1] = 1;
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
