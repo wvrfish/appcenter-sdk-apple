@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "App Center",
+        "repositoryURL": "https://github.com/microsoft/appcenter-sdk-apple.git",
+        "state": {
+          "branch": "feature/spm/manifest",
+          "revision": "52805c91849787d5f155b400c4b91e3d2e6b72fa",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
