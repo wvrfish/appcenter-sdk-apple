@@ -155,6 +155,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSCrashesDelegate, UNUser
     })
 
     setAppCenterDelegate()
+
+    #if canImport(AppCenterDistribute)
+    MSDistribute.checkForUpdate()
+    #endif
+
     return true
   }
 
