@@ -60,12 +60,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     MSPush.setDelegate(self);
 
     // Set loglevel to verbose.
-    MSACAppCenter.setLogLevel(MSACLogLevel.verbose)
+    AppCenter.logLevel = .verbose
 
     // Set custom log URL.
     let logUrl = UserDefaults.standard.string(forKey: kMSLogUrl)
     if logUrl != nil {
-      MSACAppCenter.setLogUrl(logUrl)
+      AppCenter.setLogUrl(logUrl)
     }
     
     // Set location manager.
@@ -75,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     // Set max storage size.
     let storageMaxSize = UserDefaults.standard.object(forKey: kMSStorageMaxSizeKey) as? Int
     if storageMaxSize != nil {
-        MSACAppCenter.setMaxStorageSize(storageMaxSize!, completionHandler: { success in
+        AppCenter.setMaxStorageSize(storageMaxSize!, completionHandler: { success in
             DispatchQueue.main.async {
                 if success {
                     let realSize = Int64(ceil(Double(storageMaxSize!) / Double(kMSStoragePageSize))) * Int64(kMSStoragePageSize)
@@ -95,16 +95,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     let appSecret = UserDefaults.standard.string(forKey: kMSAppSecret) ?? kMSSwiftAppSecret
     switch startTarget {
     case .appCenter:
-        MSACAppCenter.start(appSecret, withServices: services)
+        AppCenter.start(appSecret, withServices: services)
         break
     case .oneCollector:
-        MSACAppCenter.start("target=\(kMSSwiftTargetToken)", withServices: services)
+        AppCenter.start("target=\(kMSSwiftTargetToken)", withServices: services)
         break
     case .both:
-        MSACAppCenter.start("appsecret=\(appSecret);target=\(kMSSwiftTargetToken)", withServices: services)
+        AppCenter.start("appsecret=\(appSecret);target=\(kMSSwiftTargetToken)", withServices: services)
         break
     case .none:
-        MSACAppCenter.start(withServices: services)
+        AppCenter.start(withServices: services)
         break
     case .skip:
         break
@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     // Set user id.
     let userId = UserDefaults.standard.string(forKey: kMSUserIdKey)
     if userId != nil {
-      MSACAppCenter.setUserId(userId)
+      AppCenter.setUserId(userId)
     }
 
     AppCenterProvider.shared().appCenter = AppCenterDelegateSwift()
@@ -228,7 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     let userLocation:CLLocation = locations[0] as CLLocation
     CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
       if error == nil {
-        MSACAppCenter.setCountryCode(placemarks?.first?.isoCountryCode)
+        AppCenter.setCountryCode(placemarks?.first?.isoCountryCode)
       }
     }
   }

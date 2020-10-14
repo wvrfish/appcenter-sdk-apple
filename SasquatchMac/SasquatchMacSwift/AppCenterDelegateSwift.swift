@@ -13,54 +13,54 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: MSACAppCenter section.
   func isAppCenterEnabled() -> Bool {
-    return MSACAppCenter.isEnabled()
+    return AppCenter.enabled
   }
   func setAppCenterEnabled(_ isEnabled: Bool) {
-    MSACAppCenter.setEnabled(isEnabled)
+    AppCenter.enabled = isEnabled
   }
   func setCountryCode(_ countryCode: String?) {
-    MSACAppCenter.setCountryCode(countryCode)
+    AppCenter.setCountryCode(countryCode)
   }
   func setCustomProperties(_ customProperties: MSACCustomProperties){
-    MSACAppCenter.setCustomProperties(customProperties)
+    AppCenter.setCustomProperties(customProperties)
   }
   func installId() -> String {
-    return MSACAppCenter.installId().uuidString
+    return AppCenter.installId().uuidString
   }
   func appSecret() -> String {
     return kMSSwiftAppSecret
   }
   func isDebuggerAttached() -> Bool {
-    return MSACAppCenter.isDebuggerAttached()
+    return AppCenter.isDebuggerAttached()
   }
   func startAnalyticsFromLibrary() {
-    MSACAppCenter.startFromLibrary(withServices: [MSACAnalytics.self])
+    AppCenter.startFromLibrary(withServices: [MSACAnalytics.self])
   }
   func setUserId(_ userId: String?) {
-    MSACAppCenter.setUserId(userId);
+    AppCenter.setUserId(userId);
   }
   func setLogUrl(_ logUrl: String?) {
-    MSACAppCenter.setLogUrl(logUrl);
+    AppCenter.setLogUrl(logUrl);
   }
 
   //MARK: Modules section.
   func isAnalyticsEnabled() -> Bool {
-    return MSACAnalytics.isEnabled()
+    return MSACAnalytics.isEnabled
   }
   func isCrashesEnabled() -> Bool {
-    return MSACCrashes.isEnabled()
+    return MSACCrashes.isEnabled
   }
   func isPushEnabled() -> Bool {
-    return MSPush.isEnabled()
+    return MSPush.isEnabled
   }
   func setAnalyticsEnabled(_ isEnabled: Bool) {
-    MSACAnalytics.setEnabled(isEnabled)
+    MSACAnalytics.isEnabled = isEnabled
   }
   func setCrashesEnabled(_ isEnabled: Bool) {
-    MSACCrashes.setEnabled(isEnabled)
+    MSACCrashes.isEnabled = isEnabled
   }
   func setPushEnabled(_ isEnabled: Bool) {
-    MSPush.setEnabled(isEnabled)
+    MSPush.isEnabled = isEnabled
   }
 
   //MARK: MSACAnalytics section.
@@ -172,12 +172,12 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: MSEventFilter section.
   func isEventFilterEnabled() -> Bool{
-    return MSEventFilter.isEnabled();
+    return MSEventFilter.isEnabled;
   }
   func setEventFilterEnabled(_ isEnabled: Bool){
-    MSEventFilter.setEnabled(isEnabled);
+    MSEventFilter.isEnabled = isEnabled;
   }
   func startEventFilterService() {
-    MSACAppCenter.startService(MSEventFilter.self)
+    AppCenter.startService(MSEventFilter.self)
   }
 }

@@ -29,7 +29,7 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   // MSACAppCenter section.
   func isAppCenterEnabled() -> Bool {
-    return MSACAppCenter.isEnabled()
+    return AppCenter.isEnabled
   }
 
   func setAppCenterEnabled(_ isEnabled: Bool) {
