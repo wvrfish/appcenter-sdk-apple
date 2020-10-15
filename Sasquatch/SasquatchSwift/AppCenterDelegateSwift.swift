@@ -78,16 +78,16 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   // Modules section.
   func isAnalyticsEnabled() -> Bool {
-    return MSACAnalytics.isEnabled()
+    return MSACAnalytics.enabled
   }
 
   func isCrashesEnabled() -> Bool {
-    return MSACCrashes.isEnabled()
+    return MSACCrashes.enabled
   }
 
   func isDistributeEnabled() -> Bool {
 #if canImport(AppCenterDistribute)
-    return Distribute.isEnabled()
+    return Distribute.enabled
 #else
     return false
 #endif
@@ -95,29 +95,29 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   func isPushEnabled() -> Bool {
 #if canImport(AppCenterPush)
-    return MSPush.isEnabled()
+    return MSPush.enabled
 #else
     return false
 #endif
   }
 
   func setAnalyticsEnabled(_ isEnabled: Bool) {
-    MSACAnalytics.setEnabled(isEnabled)
+    MSACAnalytics.enabled = isEnabled
   }
 
   func setCrashesEnabled(_ isEnabled: Bool) {
-    MSACCrashes.setEnabled(isEnabled)
+    MSACCrashes.enabled = isEnabled
   }
 
   func setDistributeEnabled(_ isEnabled: Bool) {
 #if canImport(AppCenterDistribute)
-    Distribute.setEnabled(isEnabled)
+    Distribute.enabled = isEnabled
 #endif
   }
 
   func setPushEnabled(_ isEnabled: Bool) {
 #if canImport(AppCenterPush)
-    MSPush.setEnabled(isEnabled)
+    MSPush.enabled = isEnabled
 #endif
   }
 

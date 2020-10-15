@@ -139,7 +139,7 @@ class MSMainViewController: UITableViewController, AppCenterProtocol {
     self.pushEnabledSwitch.isOn = appCenter.isPushEnabled()
 
     #if ACTIVE_COMPILATION_CONDITION_PUPPET
-    self.logFilterSwitch.isOn = MSEventFilter.isEnabled()
+    self.logFilterSwitch.isOn = MSEventFilter.enabled
     #else
     self.logFilterSwitch.isOn = false
     let cell = self.logFilterSwitch.superview!.superview as! UITableViewCell
@@ -173,7 +173,7 @@ class MSMainViewController: UITableViewController, AppCenterProtocol {
       MSACAppCenter.startService(MSEventFilter.self)
       eventFilterStarted = true
     }
-    MSEventFilter.setEnabled(sender.isOn)
+    MSEventFilter.enabled = sender.isOn
     updateViewState()
     #endif
   }
