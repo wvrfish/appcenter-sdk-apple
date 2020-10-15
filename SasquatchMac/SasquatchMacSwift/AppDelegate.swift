@@ -19,7 +19,7 @@ enum StartupMode: Int {
 
 @NSApplicationMain
 @objc(AppDelegate)
-class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushDelegate, CLLocationManagerDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDelegate, CLLocationManagerDelegate {
 
   var rootController: NSWindowController!
   var locationManager: CLLocationManager = CLLocationManager()
@@ -27,8 +27,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
   func applicationDidFinishLaunching(_ notification: Notification) {
     
     // Crashes Delegate.
-    MSACCrashes.setDelegate(self);
-    MSACCrashes.setUserConfirmationHandler({ (errorReports: [MSACErrorReport]) in
+    Crashes.delegate = self;
+    Crashes.userConfirmationHandler = ({ (errorReports: [ErrorReport]) in
       let alert: NSAlert = NSAlert()
       alert.messageText = "Sorry about that!"
       alert.informativeText = "Do you want to send an anonymous crash report so we can fix the issue?"
@@ -39,13 +39,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
 
       switch (alert.runModal()) {
       case .alertFirstButtonReturn:
-        MSACCrashes.notify(with: .always)
+        Crashes.notify(with: .always)
         break;
       case .alertSecondButtonReturn:
-        MSACCrashes.notify(with: .send)
+        Crashes.notify(with: .send)
         break;
       case .alertThirdButtonReturn:
-        MSACCrashes.notify(with: .dontSend)
+        Crashes.notify(with: .dontSend)
         break;
       default:
         break;
@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     }
 
     // Start AppCenter.
-    let services = [Analytics.self, MSACCrashes.self, MSPush.self]
+    let services = [Analytics.self, Crashes.self, MSPush.self]
     let startTarget = StartupMode(rawValue: UserDefaults.standard.integer(forKey: kMSStartTargetKey))!
     let appSecret = UserDefaults.standard.string(forKey: kMSAppSecret) ?? kMSSwiftAppSecret
     switch startTarget {
@@ -144,38 +144,38 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
   }
   // Crashes Delegate
 
-  func crashes(_ crashes: MSACCrashes!, shouldProcessErrorReport errorReport: MSACErrorReport!) -> Bool {
+  func crashes(_ crashes: Crashes!, shouldProcessErrorReport errorReport: ErrorReport!) -> Bool {
     if errorReport.exceptionReason != nil {
       NSLog("Should process error report with: %@", errorReport.exceptionReason);
     }
     return true
   }
 
-  func crashes(_ crashes: MSACCrashes!, willSend errorReport: MSACErrorReport!) {
+  func crashes(_ crashes: Crashes!, willSend errorReport: ErrorReport!) {
     if errorReport.exceptionReason != nil {
       NSLog("Will send error report with: %@", errorReport.exceptionReason);
     }
   }
 
-  func crashes(_ crashes: MSACCrashes!, didSucceedSending errorReport: MSACErrorReport!) {
+  func crashes(_ crashes: Crashes!, didSucceedSending errorReport: ErrorReport!) {
     if errorReport.exceptionReason != nil {
       NSLog("Did succeed error report sending with: %@", errorReport.exceptionReason);
     }
   }
 
-  func crashes(_ crashes: MSACCrashes!, didFailSending errorReport: MSACErrorReport!, withError error: Error!) {
+  func crashes(_ crashes: Crashes!, didFailSending errorReport: ErrorReport!, withError error: Error!) {
     if errorReport.exceptionReason != nil {
       NSLog("Did fail sending report with: %@, and error: %@", errorReport.exceptionReason, error.localizedDescription);
     }
   }
 
-  func attachments(with crashes: MSACCrashes, for errorReport: MSACErrorReport) -> [MSACErrorAttachmentLog] {
-    var attachments = [MSACErrorAttachmentLog]()
+  func attachments(with crashes: Crashes, for errorReport: ErrorReport) -> [ErrorAttachmentLog] {
+    var attachments = [ErrorAttachmentLog]()
 
     // Text attachment.
     let text = UserDefaults.standard.string(forKey: "textAttachment") ?? ""
     if !text.isEmpty {
-      let textAttachment = MSACErrorAttachmentLog.attachment(withText: text, filename: "user.log")!
+      let textAttachment = ErrorAttachmentLog.attachment(withText: text, filename: "user.log")!
       attachments.append(textAttachment)
     }
 
@@ -186,7 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
         let data = try Data(contentsOf: referenceUrl!)
         let uti = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, referenceUrl!.pathExtension as NSString, nil)?.takeRetainedValue()
         let mime = UTTypeCopyPreferredTagWithClass(uti!, kUTTagClassMIMEType)?.takeRetainedValue() as NSString?
-        let binaryAttachment = MSACErrorAttachmentLog.attachment(withBinary: data, filename: referenceUrl?.lastPathComponent, contentType: mime! as String)!
+        let binaryAttachment = ErrorAttachmentLog.attachment(withBinary: data, filename: referenceUrl?.lastPathComponent, contentType: mime! as String)!
         attachments.append(binaryAttachment)
         print("Add binary attachment with \(data.count) bytes")
       } catch {

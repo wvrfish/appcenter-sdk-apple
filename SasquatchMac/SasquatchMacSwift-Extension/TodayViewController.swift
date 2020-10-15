@@ -6,7 +6,7 @@ import AppCenterCrashes
 import Cocoa
 import NotificationCenter
 
-class TodayViewController: NSViewController, NCWidgetProviding, MSACCrashesDelegate {
+class TodayViewController: NSViewController, NCWidgetProviding, CrashesDelegate {
   
     @IBOutlet weak var addAttachments: NSButton!
     @IBOutlet weak var popupButton: NSPopUpButton!
@@ -22,8 +22,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, MSACCrashesDeleg
         let dateString = DateFormatter.localizedString(from: Date.init(), dateStyle: DateFormatter.Style.medium, timeStyle: DateFormatter.Style.medium)
         extensionLabel.stringValue = "Run #\(dateString)"
         AppCenter.logLevel = .verbose
-        MSACCrashes.setDelegate(self)
-        AppCenter.start("0b559191-f276-4e9d-9b70-4dadd5886c4e", withServices: [MSACCrashes.self])
+        Crashes.delegate = self
+        AppCenter.start("0b559191-f276-4e9d-9b70-4dadd5886c4e", withServices: [Crashes.self])
         crashes = CrashLoader.loadAllCrashes(withCategories: false) as! [MSCrash]
         popupButton.menu?.removeAllItems()
         for (index, crash) in crashes.enumerated() {
@@ -40,10 +40,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, MSACCrashesDeleg
         completionHandler(.noData)
     }
     
-    func attachments(with crashes: MSACCrashes, for errorReport: MSACErrorReport) -> [MSACErrorAttachmentLog] {
+    func attachments(with crashes: Crashes, for errorReport: ErrorReport) -> [ErrorAttachmentLog] {
         if (addAttachments.state == .on) {
-            let attachment1 = MSACErrorAttachmentLog.attachment(withText: "Hello world!", filename: "hello.txt")
-            let attachment2 = MSACErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
+            let attachment1 = ErrorAttachmentLog.attachment(withText: "Hello world!", filename: "hello.txt")
+            let attachment2 = ErrorAttachmentLog.attachment(withBinary: "Fake image".data(using: String.Encoding.utf8), filename: nil, contentType: "image/jpeg")
             return [attachment1!, attachment2!]
         }
         return [];
