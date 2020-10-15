@@ -34,18 +34,18 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     return AppCenter.isDebuggerAttached()
   }
   func startAnalyticsFromLibrary() {
-    AppCenter.startFromLibrary(withServices: [MSACAnalytics.self])
+    AppCenter.startFromLibrary(withServices: [Analytics.self])
   }
   func setUserId(_ userId: String?) {
     AppCenter.setUserId(userId);
   }
   func setLogUrl(_ logUrl: String?) {
-    AppCenter.setLogUrl(logUrl);
+    AppCenter.logUrl = logUrl;
   }
 
   //MARK: Modules section.
   func isAnalyticsEnabled() -> Bool {
-    return MSACAnalytics.isEnabled
+    return Analytics.isEnabled
   }
   func isCrashesEnabled() -> Bool {
     return MSACCrashes.isEnabled
@@ -54,7 +54,7 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     return MSPush.isEnabled
   }
   func setAnalyticsEnabled(_ isEnabled: Bool) {
-    MSACAnalytics.isEnabled = isEnabled
+    Analytics.isEnabled = isEnabled
   }
   func setCrashesEnabled(_ isEnabled: Bool) {
     MSACCrashes.isEnabled = isEnabled
@@ -63,35 +63,35 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     MSPush.isEnabled = isEnabled
   }
 
-  //MARK: MSACAnalytics section.
+  //MARK: Analytics section.
   func trackEvent(_ eventName: String) {
-    MSACAnalytics.trackEvent(eventName)
+    Analytics.trackEvent(eventName)
   }
   func trackEvent(_ eventName: String, withProperties properties: Dictionary<String, String>) {
-    MSACAnalytics.trackEvent(eventName, withProperties: properties)
+    Analytics.trackEvent(eventName, withProperties: properties)
   }
   func trackEvent(_ eventName: String, withProperties properties: Dictionary<String, String>, flags: MSACFlags) {
-    MSACAnalytics.trackEvent(eventName, withProperties: properties, flags:flags)
+    Analytics.trackEvent(eventName, withProperties: properties, flags:flags)
   }
-  func trackEvent(_ eventName: String, withTypedProperties properties: MSACEventProperties) {
-    MSACAnalytics.trackEvent(eventName, withProperties: properties)
+  func trackEvent(_ eventName: String, withTypedProperties properties: EventProperties) {
+    Analytics.trackEvent(eventName, withProperties: properties)
   }
-  func trackEvent(_ eventName: String, withTypedProperties properties: MSACEventProperties?, flags: MSACFlags) {
-    MSACAnalytics.trackEvent(eventName, withProperties: properties, flags: flags)
+  func trackEvent(_ eventName: String, withTypedProperties properties: EventProperties?, flags: MSACFlags) {
+    Analytics.trackEvent(eventName, withProperties: properties, flags: flags)
   }
   func resume() {
-    MSACAnalytics.resume()
+    Analytics.resume()
   }
   func pause() {
-    MSACAnalytics.pause()
+    Analytics.pause()
   }
   #warning("TODO: Uncomment when trackPage is moved from internal to public")
   func trackPage(_ pageName: String) {
-    // MSACAnalytics.trackPage(pageName)
+    // Analytics.trackPage(pageName)
   }
   #warning("TODO: Uncomment when trackPage is moved from internal to public")
   func trackPage(_ pageName: String, withProperties properties: Dictionary<String, String>) {
-    // MSACAnalytics.trackPage(pageName, withProperties: properties)
+    // Analytics.trackPage(pageName, withProperties: properties)
   }
 
   //MARK: MSACCrashes section.

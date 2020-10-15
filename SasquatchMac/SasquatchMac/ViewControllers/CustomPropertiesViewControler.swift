@@ -58,7 +58,7 @@ class CustomPropertiesViewControler: NSViewController, NSTableViewDelegate {
       }
       switch type {
       case .Clear:
-        customProperties.clearProperty(forKey: key)
+        customProperties.clearProperty(for: key)
       case .String:
         customProperties.setString(property.string, forKey: key)
       case .Number:

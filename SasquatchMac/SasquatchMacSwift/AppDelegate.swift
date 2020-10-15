@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     // Set custom log URL.
     let logUrl = UserDefaults.standard.string(forKey: kMSLogUrl)
     if logUrl != nil {
-      AppCenter.setLogUrl(logUrl)
+      AppCenter.logUrl = logUrl
     }
     
     // Set location manager.
@@ -90,7 +90,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, MSACCrashesDelegate, MSPushD
     }
 
     // Start AppCenter.
-    let services = [MSACAnalytics.self, MSACCrashes.self, MSPush.self]
+    let services = [Analytics.self, MSACCrashes.self, MSPush.self]
     let startTarget = StartupMode(rawValue: UserDefaults.standard.integer(forKey: kMSStartTargetKey))!
     let appSecret = UserDefaults.standard.string(forKey: kMSAppSecret) ?? kMSSwiftAppSecret
     switch startTarget {
