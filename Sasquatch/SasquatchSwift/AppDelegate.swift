@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSACCrashesDelegate, UNUs
     }
     MSACCrashes.setDelegate(self)
 #if canImport(AppCenterDistribute)
-    MSACDistribute.setDelegate(self)
+    Distribute.setDelegate(self)
 #endif
 #if canImport(AppCenterPush)
     MSPush.setDelegate(self)
@@ -79,17 +79,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSACCrashesDelegate, UNUs
 #if canImport(AppCenterDistribute)
     if let updateTrackValue = UserDefaults.standard.value(forKey: kMSUpdateTrackKey) as? Int,
        let updateTrack = MSACUpdateTrack(rawValue: updateTrackValue) {
-        MSACDistribute.updateTrack = updateTrack
+        Distribute.updateTrack = updateTrack
     }
     if UserDefaults.standard.bool(forKey: kSASAutomaticCheckForUpdateDisabledKey) {
-        MSACDistribute.disableAutomaticCheckForUpdate()
+        Distribute.disableAutomaticCheckForUpdate()
     }
 #endif
 
     // Start App Center SDK.
     var services = [MSACAnalytics.self, MSACCrashes.self]
 #if canImport(AppCenterDistribute)
-    services.append(MSACDistribute.self)
+    services.append(Distribute.self)
 #endif
 #if canImport(AppCenterPush)
     services.append(MSPush.self)
@@ -186,7 +186,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSACCrashesDelegate, UNUs
    */
   func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
     // Forward the URL.
-    return MSACDistribute.open(url);
+    return Distribute.open(url);
   }
 
 #endif
@@ -323,8 +323,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSACCrashesDelegate, UNUs
 
 #if canImport(AppCenterDistribute)
 
-extension AppDelegate: MSACDistributeDelegate {
-  func distribute(_ distribute: MSACDistribute!, releaseAvailableWith details: MSACReleaseDetails!) -> Bool {
+extension AppDelegate: DistributeDelegate {
+  func distribute(_ distribute: Distribute!, releaseAvailableWith details: ReleaseDetails!) -> Bool {
     if UserDefaults.standard.bool(forKey: kSASCustomizedUpdateAlertKey) {
 
       // Show a dialog to the user where they can choose if they want to update.
@@ -334,12 +334,12 @@ extension AppDelegate: MSACDistributeDelegate {
 
       // Add a "Yes"-Button and call the notifyUpdateAction-callback with MSUserAction.update
       alertController.addAction(UIAlertAction(title: NSLocalizedString("distribute_alert_yes", tableName: "Sasquatch", comment: ""), style: .cancel) { _ in
-        MSACDistribute.notify(.update)
+        Distribute.notify(.update)
       })
 
       // Add a "No"-Button and call the notifyUpdateAction-callback with MSUserAction.postpone
       alertController.addAction(UIAlertAction(title: NSLocalizedString("distribute_alert_no", tableName: "Sasquatch", comment: ""), style: .default) { _ in
-        MSACDistribute.notify(.postpone)
+        Distribute.notify(.postpone)
       })
 
       // Show the alert controller.

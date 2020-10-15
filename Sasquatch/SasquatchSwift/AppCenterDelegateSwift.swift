@@ -11,11 +11,11 @@ import AppCenterDistribute
  * Selectors for reflection.
  */
 @objc protocol Selectors {
-  func sharedInstance() -> MSACDistribute
+  func sharedInstance() -> Distribute
   func checkForUpdate()
-  func showConfirmationAlert(_ releaseDetails: MSACReleaseDetails)
+  func showConfirmationAlert(_ releaseDetails: ReleaseDetails)
   func showDistributeDisabledAlert()
-  func delegate() -> MSACDistributeDelegate
+  func delegate() -> DistributeDelegate
 }
 #endif
 #if canImport(AppCenterPush)
@@ -87,7 +87,7 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   func isDistributeEnabled() -> Bool {
 #if canImport(AppCenterDistribute)
-    return MSACDistribute.isEnabled()
+    return Distribute.isEnabled()
 #else
     return false
 #endif
@@ -111,7 +111,7 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   func setDistributeEnabled(_ isEnabled: Bool) {
 #if canImport(AppCenterDistribute)
-    MSACDistribute.setEnabled(isEnabled)
+    Distribute.setEnabled(isEnabled)
 #endif
   }
 
@@ -177,7 +177,7 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   func checkForUpdate() {
 #if canImport(AppCenterDistribute)
-    MSACDistribute.checkForUpdate()
+    Distribute.checkForUpdate()
 #endif
   }
 
@@ -185,11 +185,11 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 #if canImport(AppCenterDistribute)
     let sharedInstanceSelector = #selector(Selectors.sharedInstance)
     let confirmationAlertSelector = #selector(Selectors.showConfirmationAlert(_:))
-    let releaseDetails = MSACReleaseDetails();
+    let releaseDetails = ReleaseDetails();
     releaseDetails.version = "10";
     releaseDetails.shortVersion = "1.0";
-    if (MSACDistribute.responds(to: sharedInstanceSelector)) {
-      let distributeInstance = MSACDistribute.perform(sharedInstanceSelector).takeUnretainedValue()
+    if (Distribute.responds(to: sharedInstanceSelector)) {
+      let distributeInstance = Distribute.perform(sharedInstanceSelector).takeUnretainedValue()
       if (distributeInstance.responds(to: confirmationAlertSelector)) {
         _ = distributeInstance.perform(confirmationAlertSelector, with: releaseDetails)
       }
@@ -201,8 +201,8 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 #if canImport(AppCenterDistribute)
     let sharedInstanceSelector = #selector(Selectors.sharedInstance)
     let disabledAlertSelector = #selector(Selectors.showDistributeDisabledAlert)
-    if (MSACDistribute.responds(to: sharedInstanceSelector)) {
-      let distributeInstance = MSACDistribute.perform(sharedInstanceSelector).takeUnretainedValue()
+    if (Distribute.responds(to: sharedInstanceSelector)) {
+      let distributeInstance = Distribute.perform(sharedInstanceSelector).takeUnretainedValue()
       if (distributeInstance.responds(to: disabledAlertSelector)) {
         _ = distributeInstance.perform(disabledAlertSelector)
       }
@@ -214,13 +214,13 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 #if canImport(AppCenterDistribute)
     let sharedInstanceSelector = #selector(Selectors.sharedInstance)
     let delegateSelector = #selector(Selectors.delegate)
-    let releaseDetails = MSACReleaseDetails();
+    let releaseDetails = ReleaseDetails();
     releaseDetails.version = "10";
     releaseDetails.shortVersion = "1.0";
-    if (MSACDistribute.responds(to: sharedInstanceSelector)) {
-      let distributeInstance = MSACDistribute.perform(sharedInstanceSelector).takeUnretainedValue()
+    if (Distribute.responds(to: sharedInstanceSelector)) {
+      let distributeInstance = Distribute.perform(sharedInstanceSelector).takeUnretainedValue()
       let distriuteDelegate = distributeInstance.perform(delegateSelector).takeUnretainedValue()
-      _ = distriuteDelegate.distribute?(distributeInstance as? MSACDistribute, releaseAvailableWith: releaseDetails)
+      _ = distriuteDelegate.distribute?(distributeInstance as? Distribute, releaseAvailableWith: releaseDetails)
     }
 #endif
   }

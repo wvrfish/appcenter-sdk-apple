@@ -52,7 +52,7 @@ import AppCenterAnalytics
   func hasReceivedMemoryWarningInLastSession() -> Bool
   func generateTestCrash()
   
-  // MSACDistribute section.
+  // Distribute section.
   func showConfirmationAlert()
   func checkForUpdate()
   func showDistributeDisabledAlert()
