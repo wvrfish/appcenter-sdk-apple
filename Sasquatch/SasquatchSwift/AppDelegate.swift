@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashesDelegate, UNUserNo
     }
     Crashes.delegate = self
 #if canImport(AppCenterDistribute)
-    Distribute.setDelegate(self)
+    Distribute.delegate = self
 #endif
 #if canImport(AppCenterPush)
     MSPush.setDelegate(self)
