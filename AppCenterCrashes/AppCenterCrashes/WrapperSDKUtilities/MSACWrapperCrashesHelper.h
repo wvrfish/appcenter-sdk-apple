@@ -18,23 +18,22 @@ NS_SWIFT_NAME(WrapperCrashesHelper)
 @interface MSACWrapperCrashesHelper : NSObject
 
 /**
- * Sets or gets the crash handler setup delegate.
+ * The crash handler setup delegate.
  *
  */
-@property(class, nonatomic, setter=setCrashHandlerSetupDelegate:, getter=getCrashHandlerSetupDelegate) id<MSACCrashHandlerSetupDelegate>
-    crashHandlerSetupDelegate;
+@property(class, nonatomic, setter=setCrashHandlerSetupDelegate:) _Nullable id<MSACCrashHandlerSetupDelegate> сrashHandlerSetupDelegate;
 
 /**
  * Enables or disables automatic crash processing. Passing NO causes SDK not to send reports immediately, even if "Always Send" is true.
  */
-@property(class, nonatomic, setter=setAutomaticProcessing:) BOOL automaticProcessing;
+@property(class, nonatomic) BOOL automaticProcessing;
 
 /**
  * Gets a list of unprocessed crash reports. Will block until the service starts.
  *
  * @return An array of unprocessed error reports.
  */
-@property(class, readonly, nonatomic) NSArray<MSACErrorReport *> * unprocessedCrashReports;
+@property(class, readonly, nonatomic) NSArray<MSACErrorReport *> *unprocessedCrashReports;
 
 /**
  * Resumes processing for a given subset of the unprocessed reports.

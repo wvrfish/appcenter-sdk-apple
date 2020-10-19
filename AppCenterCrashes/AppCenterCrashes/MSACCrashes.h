@@ -88,14 +88,14 @@ NS_SWIFT_NAME(Crashes)
  *
  * @return Returns YES is the app has crashed in the last session.
  */
-@property(class, readonly, nonatomic) BOOL hasCrashedInLastSession;
+@property(class, readonly, nonatomic) BOOL hasCrashedInLastSession NS_SWIFT_NAME(crashedInLastSession);
 
 /**
  * Check if the app received memory warning in the last session.
  *
  * @return Returns YES is the app received memory warning in the last session.
  */
-@property(class, readonly, nonatomic) BOOL hasReceivedMemoryWarningInLastSession;
+@property(class, readonly, nonatomic) BOOL hasReceivedMemoryWarningInLastSession NS_SWIFT_NAME(receivedMemoryWarningInLastSession);
 
 /**
  * Provides details about the crash that occurred in the last app session
@@ -149,15 +149,14 @@ NS_SWIFT_NAME(Crashes)
  *
  * @see MSACCrashesDelegate
  */
-@property(class, nonatomic, weak) id<MSACCrashesDelegate> _Nullable delegate;
+@property(class, nonatomic) id<MSACCrashesDelegate> _Nullable delegate;
 
 /**
  * Set a user confirmation handler that is invoked right before processing crash reports to determine whether sending crash reports or not.
  *
- *
  * @see MSACUserConfirmationHandler
  */
-@property(class, nonatomic, strong) MSACUserConfirmationHandler _Nullable userConfirmationHandler;
+@property(class, nonatomic) MSACUserConfirmationHandler _Nullable userConfirmationHandler;
 
 /**
  * Notify SDK with a confirmation to handle the crash report.
