@@ -65,7 +65,7 @@ class AppCenterDelegateSwift: AppCenterDelegate {
   }
 
   func startAnalyticsFromLibrary() {
-    AppCenter.startFromLibrary(withServices: [Analytics.self])
+    AppCenter.startFromLibrary(services: [Analytics.self])
   }
 
   func setUserId(_ userId: String?) {
@@ -78,16 +78,16 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   // Modules section.
   func isAnalyticsEnabled() -> Bool {
-    return Analytics.isEnabled
+    return Analytics.enabled
   }
 
   func isCrashesEnabled() -> Bool {
-    return Crashes.isEnabled
+    return Crashes.enabled
   }
 
   func isDistributeEnabled() -> Bool {
 #if canImport(AppCenterDistribute)
-    return Distribute.isEnabled
+    return Distribute.enabled
 #else
     return false
 #endif
@@ -95,29 +95,29 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   func isPushEnabled() -> Bool {
 #if canImport(AppCenterPush)
-    return MSPush.isEnabled
+    return MSPush.enabled
 #else
     return false
 #endif
   }
 
   func setAnalyticsEnabled(_ isEnabled: Bool) {
-    Analytics.isEnabled = isEnabled
+    Analytics.enabled = isEnabled
   }
 
   func setCrashesEnabled(_ isEnabled: Bool) {
-    Crashes.isEnabled = isEnabled
+    Crashes.enabled = isEnabled
   }
 
   func setDistributeEnabled(_ isEnabled: Bool) {
 #if canImport(AppCenterDistribute)
-    Distribute.isEnabled = isEnabled
+    Distribute.enabled = isEnabled
 #endif
   }
 
   func setPushEnabled(_ isEnabled: Bool) {
 #if canImport(AppCenterPush)
-    MSPush.isEnabled = isEnabled
+    MSPush.enabled = isEnabled
 #endif
   }
 
@@ -162,11 +162,11 @@ class AppCenterDelegateSwift: AppCenterDelegate {
 
   // MSACCrashes section.
   func hasCrashedInLastSession() -> Bool {
-    return Crashes.hasCrashedInLastSession
+    return Crashes.crashedInLastSession
   }
   
   func hasReceivedMemoryWarningInLastSession() -> Bool {
-    return Crashes.hasReceivedMemoryWarningInLastSession
+    return Crashes.receivedMemoryWarningInLastSession
   }
   
   func generateTestCrash() {

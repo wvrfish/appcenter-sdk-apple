@@ -27,9 +27,9 @@ class AppCenterDelegateSwift : AppCenterDelegate {
   func isDebuggerAttached()->Bool { return AppCenter.isDebuggerAttached(); }
 
   // MARK: MSACAnalytics section.
-  func isAnalyticsEnabled()->Bool { return Analytics.isEnabled; }
+  func isAnalyticsEnabled()->Bool { return Analytics.enabled; }
 
-  func setAnalyticsEnabled(_ isEnabled : Bool) { Analytics.isEnabled = isEnabled; }
+  func setAnalyticsEnabled(_ isEnabled : Bool) { Analytics.enabled = isEnabled; }
 
   func trackEvent(_ eventName : String) { Analytics.trackEvent(eventName); }
 
@@ -50,15 +50,15 @@ class AppCenterDelegateSwift : AppCenterDelegate {
   // MARK: MSACCrashes section.
 
   func isCrashesEnabled() -> Bool{
-    return Crashes.isEnabled
+    return Crashes.enabled
   }
 
   func setCrashesEnabled(_ isEnabled: Bool){
-    Crashes.isEnabled = isEnabled
+    Crashes.enabled = isEnabled
   }
 
   func hasCrashedInLastSession() -> Bool{
-    return Crashes.hasCrashedInLastSession
+    return Crashes.crashedInLastSession
   }
 
   func generateTestCrash() {
@@ -135,10 +135,10 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: MSEventFilter section.
   func isEventFilterEnabled() -> Bool{
-    return MSEventFilter.isEnabled;
+    return MSEventFilter.enabled;
   }
   func setEventFilterEnabled(_ isEnabled: Bool){
-    MSEventFilter.isEnabled = isEnabled;
+    MSEventFilter.enabled = isEnabled;
   }
   func startEventFilterService() {
     AppCenter.startService(MSEventFilter.self)

@@ -100,16 +100,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashesDelegate, UNUserNo
     Analytics.setTransmissionInterval(UInt(latencyTimeValue));
     switch startTarget {
     case .APPCENTER:
-      AppCenter.start(appSecret, withServices: services)
+      AppCenter.start(withAppSecret: appSecret, services: services)
       break
     case .ONECOLLECTOR:
-      AppCenter.start("target=\(kMSSwiftTargetToken)", withServices: services)
+      AppCenter.start(withAppSecret: "target=\(kMSSwiftTargetToken)", services: services)
       break
     case .BOTH:
-      AppCenter.start("\(appSecret);target=\(kMSSwiftTargetToken)", withServices: services)
+      AppCenter.start(withAppSecret: "\(appSecret);target=\(kMSSwiftTargetToken)", services: services)
       break
     case .NONE:
-      AppCenter.start(withServices: services)
+      AppCenter.start(services: services)
       break
     case .SKIP:
       break
