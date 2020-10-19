@@ -34,7 +34,7 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     return AppCenter.isDebuggerAttached()
   }
   func startAnalyticsFromLibrary() {
-    AppCenter.startFromLibrary(withServices: [Analytics.self])
+    AppCenter.startFromLibrary(services: [Analytics.self])
   }
   func setUserId(_ userId: String?) {
     AppCenter.setUserId(userId);
@@ -45,22 +45,22 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: Modules section.
   func isAnalyticsEnabled() -> Bool {
-    return Analytics.isEnabled
+    return Analytics.enabled
   }
   func isCrashesEnabled() -> Bool {
-    return Crashes.isEnabled
+    return Crashes.enabled
   }
   func isPushEnabled() -> Bool {
-    return MSPush.isEnabled
+    return MSPush.enabled
   }
   func setAnalyticsEnabled(_ isEnabled: Bool) {
-    Analytics.isEnabled = isEnabled
+    Analytics.enabled = isEnabled
   }
   func setCrashesEnabled(_ isEnabled: Bool) {
-    Crashes.isEnabled = isEnabled
+    Crashes.enabled = isEnabled
   }
   func setPushEnabled(_ isEnabled: Bool) {
-    MSPush.isEnabled = isEnabled
+    MSPush.enabled = isEnabled
   }
 
   //MARK: Analytics section.
@@ -172,10 +172,10 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: MSEventFilter section.
   func isEventFilterEnabled() -> Bool{
-    return MSEventFilter.isEnabled;
+    return MSEventFilter.enabled;
   }
   func setEventFilterEnabled(_ isEnabled: Bool){
-    MSEventFilter.isEnabled = isEnabled;
+    MSEventFilter.enabled = isEnabled;
   }
   func startEventFilterService() {
     AppCenter.startService(MSEventFilter.self)

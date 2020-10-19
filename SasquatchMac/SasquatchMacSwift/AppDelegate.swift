@@ -95,16 +95,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDeleg
     let appSecret = UserDefaults.standard.string(forKey: kMSAppSecret) ?? kMSSwiftAppSecret
     switch startTarget {
     case .appCenter:
-        AppCenter.start(appSecret, withServices: services)
+        AppCenter.start(withAppSecret:appSecret, services: services)
         break
     case .oneCollector:
-        AppCenter.start("target=\(kMSSwiftTargetToken)", withServices: services)
+        AppCenter.start(withAppSecret: "target=\(kMSSwiftTargetToken)", services: services)
         break
     case .both:
-        AppCenter.start("appsecret=\(appSecret);target=\(kMSSwiftTargetToken)", withServices: services)
+        AppCenter.start(withAppSecret: "appsecret=\(appSecret);target=\(kMSSwiftTargetToken)", services: services)
         break
     case .none:
-        AppCenter.start(withServices: services)
+        AppCenter.start(services: services)
         break
     case .skip:
         break
@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDeleg
     // Set user id.
     let userId = UserDefaults.standard.string(forKey: kMSUserIdKey)
     if userId != nil {
-      AppCenter.setUserId(userId)
+      AppCenter.set(userId:userId)
     }
 
     AppCenterProvider.shared().appCenter = AppCenterDelegateSwift()
