@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDeleg
     // Set user id.
     let userId = UserDefaults.standard.string(forKey: kMSUserIdKey)
     if userId != nil {
-      AppCenter.set(userId:userId)
+      AppCenter.setUserId(userId)
     }
 
     AppCenterProvider.shared().appCenter = AppCenterDelegateSwift()
