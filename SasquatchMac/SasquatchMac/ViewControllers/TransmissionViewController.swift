@@ -476,16 +476,16 @@ class TransmissionViewController: NSViewController, NSTableViewDataSource, NSTab
     let value: String? = sender.stringValue.isEmpty ? nil : sender.stringValue
     switch CommonSchemaPropertyRow(rawValue: propertyIndex - 1)! {
     case .appName:
-      target.propertyConfigurator.setAppName(value)
+      target.propertyConfigurator.appName = value
       break
     case .appVersion:
-      target.propertyConfigurator.setAppVersion(value)
+      target.propertyConfigurator.appVersion = value
       break
     case .appLocale:
-      target.propertyConfigurator.setAppLocale(value)
+      target.propertyConfigurator.appLocale = value
       break
     case .userId:
-      target.propertyConfigurator.setUserId(value)
+      target.propertyConfigurator.userId = value
       break
     }
   }

@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashesDelegate, UNUserNo
     let appSecret = UserDefaults.standard.string(forKey: kMSAppSecret) ?? kMSSwiftCombinedAppSecret
     let startTarget = StartupMode(rawValue: UserDefaults.standard.integer(forKey: kMSStartTargetKey))!
     let latencyTimeValue = UserDefaults.standard.integer(forKey: kMSTransmissionIterval);
-    Analytics.setTransmissionInterval(UInt(latencyTimeValue));
+    Analytics.transmissionInterval = UInt(latencyTimeValue);
     switch startTarget {
     case .APPCENTER:
       AppCenter.start(withAppSecret: appSecret, services: services)
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashesDelegate, UNUserNo
     // Set user id.
     let userId = UserDefaults.standard.string(forKey: kMSUserIdKey)
     if userId != nil {
-      AppCenter.setUserId(userId);
+      AppCenter.userId = userId;
     }
 
     // Crashes Delegate.
@@ -310,7 +310,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashesDelegate, UNUserNo
     let userLocation:CLLocation = locations[0] as CLLocation
     CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
       if error == nil {
-        AppCenter.setCountryCode(placemarks?.first?.isoCountryCode)
+        AppCenter.countryCode = placemarks?.first?.isoCountryCode
       }
     }
   }

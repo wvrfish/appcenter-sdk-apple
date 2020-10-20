@@ -113,7 +113,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDeleg
     // Set user id.
     let userId = UserDefaults.standard.string(forKey: kMSUserIdKey)
     if userId != nil {
-      AppCenter.setUserId(userId)
+      AppCenter.userId = userId
     }
 
     AppCenterProvider.shared().appCenter = AppCenterDelegateSwift()
@@ -228,7 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, CrashesDelegate, MSPushDeleg
     let userLocation:CLLocation = locations[0] as CLLocation
     CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
       if error == nil {
-        AppCenter.setCountryCode(placemarks?.first?.isoCountryCode)
+        AppCenter.countryCode = placemarks?.first?.isoCountryCode
       }
     }
   }

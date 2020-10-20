@@ -69,11 +69,11 @@ class AppCenterDelegateSwift: AppCenterDelegate {
   }
 
   func setUserId(_ userId: String?) {
-    AppCenter.setUserId(userId);
+    AppCenter.userId = userId;
   }
   
   func setCountryCode(_ countryCode: String?) {
-    AppCenter.setCountryCode(countryCode);
+    AppCenter.countryCode = countryCode;
   }
 
   // Modules section.

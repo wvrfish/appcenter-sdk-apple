@@ -19,7 +19,7 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     AppCenter.enabled = isEnabled
   }
   func setCountryCode(_ countryCode: String?) {
-    AppCenter.setCountryCode(countryCode)
+    AppCenter.countryCode = countryCode
   }
   func setCustomProperties(_ customProperties: CustomProperties){
     AppCenter.setCustomProperties(customProperties)
@@ -37,7 +37,7 @@ class AppCenterDelegateSwift : AppCenterDelegate {
     AppCenter.startFromLibrary(services: [Analytics.self])
   }
   func setUserId(_ userId: String?) {
-    AppCenter.setUserId(userId);
+    AppCenter.userId = userId;
   }
   func setLogUrl(_ logUrl: String?) {
     AppCenter.logUrl = logUrl;
@@ -96,7 +96,7 @@ class AppCenterDelegateSwift : AppCenterDelegate {
 
   //MARK: Crashes section.
   func hasCrashedInLastSession() -> Bool {
-    return Crashes.hasCrashedInLastSession
+    return Crashes.crashedInLastSession
   }
   func generateTestCrash() {
     Crashes.generateTestCrash()
