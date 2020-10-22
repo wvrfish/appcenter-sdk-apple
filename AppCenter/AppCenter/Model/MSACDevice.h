@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSACWrapperSdk.h"
+#import <AppCenter/MSACWrapperSdk.h>
 
 @interface MSACDevice : MSACWrapperSdk
 

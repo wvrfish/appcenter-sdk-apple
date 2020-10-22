@@ -3,7 +3,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSACLogWithProperties.h"
+#import <AppCenter/MSACLogWithProperties.h>
 
 @interface MSACLogWithNameAndProperties : MSACLogWithProperties
 

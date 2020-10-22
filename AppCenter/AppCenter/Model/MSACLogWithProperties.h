@@ -6,7 +6,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "MSACAbstractLog.h"
+#import <AppCenter/MSACAbstractLog.h>
 
 @interface MSACLogWithProperties : MSACAbstractLog
 
