@@ -38,7 +38,7 @@ jobs:
     displayName: Build
     inputs:
       xcWorkspacePath: AppCenter.xcworkspace
-      scheme: 'All Frameworks+Documentation'
+      scheme: 'AppCenterAnalytics'
       xcodeVersion: specifyPath
       xcodeDeveloperDir: '$(XCODE_PATH)'
     timeoutInMinutes: 15
